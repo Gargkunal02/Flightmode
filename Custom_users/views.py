@@ -47,13 +47,13 @@ def PatientSignUpView(request):
             patient.address = address
             # patient.pregnancy_month = Month_of_Pregnancy
             patient.save()
-            return redirect('home')
+            return redirect('portal:home')
             # return render(request, 'portal/patient_home.html')
     return render(request, 'Login/register.html')
 
 
-def home(request):
-    return render(request,'Login/home.html')
+# def home(request):
+#     return render(request,'Login/home.html')
 
 
 

@@ -38,6 +38,8 @@ urlpatterns = [
     # App4 (report_processing)
     path('', include('report_processing.urls', namespace='report_processing')),
 
+    path('',include('portal.urls'))
+
     # Allauth (built-in)
     # path('accounts/', include('allauth.urls')),
 

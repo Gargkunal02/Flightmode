@@ -1,176 +1,215 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
 
 <head>
-	<title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Yoga Studio Template">
+    <meta name="keywords" content="Yoga, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Violet | Template</title>
 
-	<!-- fontawesome -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css"
-		integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
 
-
-	<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/fakeLoader.min.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-
-	<script src="{% static 'js/jquery.min.js' %}"></script>
-
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 
 <body>
-
-	<!-- loader -->
-	<div class="fakeLoader"></div>
-	<!-- loader -->
-
-
-	<nav class="navbar navbar-expand-lg">
-		<div class="container">
-			{% comment %} <a class="navbar-brand text-white" href="{% url 'home' %}"><b>ODLRS</b></a> {% endcomment %}
-			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<!-- <span class="navbar-toggler-icon"></span> -->
-				<i class="fa fa-bars text-white"></i>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item ">
-						{% comment %} <a class="nav-link" href="{% url 'home' %}">Home</a> {% endcomment %}
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'diagnostic_centers:all-centers' %}">Centers</a>
-					</li>
-					<li class="nav-item ">
-						<a class="nav-link" href="{% url 'tests:all-tests' %}">Tests</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'tests:categories' %}">Categories</a>
-					</li>
-					<!-- <li class="nav-item">
-						<a class="nav-link slide-left" href="#">
-							<i class="fas fa-cart-plus"></i>
-						</a>
-					</li> -->
-
-					{% if user.is_authenticated %}
-					<li class="nav-item user-profile">
-						<a class="nav-link d-flex dropdown-btn" href="#">
-							<img src="{{ user.customer_profile.image.url }}" alt="" class="rounded-circle">
-							<span class=" dropdown-toggle ml-2">{{user.username}} </span>
-						</a>
-
-						<ul class="dropdown">
-							<li class="text-center">
-								<img src="{{ user.customer_profile.image.url }}" alt="" class="rounded-circle">
-								<p>{{ user.customer_profile.profile_name }}</p>
-								<a href="{% url 'Custom_users:profile-edit' %}">
-									Edit Profile
-								</a>
-							</li>
-							<div class="dropdown-divider"></div>
-							<li class="dropdown-item">
-								<a href="{% url 'Custom_users:orders-by-user' %}"> View Profile</a>
-							</li>
-							<li class="dropdown-item">
-								<a href="{% url 'Custom_users:filtered-reports-by-user' user.id %}"> Reports</a>
-							</li>
-							<li class="dropdown-item">
-								{% comment %} <a href="{% url 'account_logout' %}"> Logout</a> {% endcomment %}
-							</li>
-						</ul>
-					</li>
-					<!-- <li class="nav-item">
-						{% comment %} <a class="nav-link" href="{% url 'account_logout' %}">Logout</a> {% endcomment %}
-					</li> -->
-					{% else %}
-					<li class="nav-item ">
-						{% comment %} <a class="nav-link" href="{% url 'account_login' %}">Login</a> {% endcomment %}
-					</li>
-					<li class="nav-item">
-						{% comment %} <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a> {% endcomment %}
-					</li>
-					{% endif %}
-
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-	<!-- <div class="add-to-cart-box" id="add-to-cart">
-		<div class="card">
-			<div class="card-header">
-				<h5 class="card-title float-left">Lorem, ipsum dolor.</h5>
-				<button type="button" class="close  slide-right">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="card-body p-4">
-
-				<p class="item-price"> <span id="itemPrice"></span> BDT </p>
-
-			</div>
-		</div>
-	</div> -->
-
-	{% block content %} {% endblock %} {% block extra_body %} {% endblock %}
-
-	<div class="footer text-white text-center py-3">
-		<div class="w-100 text-center d-flex justify-content-center">
-			{#			<div class="d-box"> Developed By</div>#}
-
-			<div class="d-box px-2">
-				{% comment %} <a class="text-white" href="{% url 'developers' %}" target="_blank" data-toggle="tooltip" {% endcomment %}
-					data-placement="top" title="About Developers">About Developers</a>
-			</div>
-
-			{#			<div class="d-box px-2">#}
-			{#				<a class="text-warning" href="https://www.linkedin.com/in/abdullah-al-galib" target="_blank"#}
-			{#					data-toggle="tooltip" data-placement="top" title="Abdullah Al Galib">Galib</a>#}
-			{#				and#}
-			{#			</div>#}
-			{##}
-			{#			<div class="d-box">#}
-			{#				<a class="text-warning" href="https://www.linkedin.com/in/sohanoor" target="_blank" data-toggle="tooltip"#}
-			{#					data-placement="top" title="Sohanur Rahman">#}
-			{#					Sohanur#}
-			{#				</a>#}
-			{#			</div>#}
-
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- Search model -->
+	<div class="search-model">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-switch">+</div>
+			<form class="search-model-form">
+				<input type="text" id="search-input" placeholder="Search here.....">
+			</form>
 		</div>
 	</div>
+	<!-- Search model end -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="logo">
+                    <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                </div>
+                <div class="header-right">
+                    <img src="{% static 'img/icons/search.png' %}" alt="" class="search-trigger">
+                    <img src="{% static 'img/icons/man.png' %}" alt="">
+                    <a href="#">
+                        <img src="{% static 'img/icons/bag.png' %}" alt="">
+                        <span>2</span>
+                    </a>
+                </div>
+                <div class="user-access">
+                    <a href="#">Register</a>
+                    <a href="#" class="in">Sign in</a>
+                </div>
+                <nav class="main-menu mobile-menu">
+                    <ul>
+                        <li><a class="active" href="./index.html">Home</a></li>
+                        <li><a href="./categories.html">Shop</a>
+                            <ul class="sub-menu">
+                                <li><a href="product-page.html">Product Page</a></li>
+                                <li><a href="shopping-cart.html">Shopping Card</a></li>
+                                <li><a href="check-out.html">Check out</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./product-page.html">About</a></li>
+                        <li><a href="./check-out.html">Blog</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- Header Info Begin -->
+    <div class="header-info">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="header-item">
+                        <img src="{% static 'img/icons/delivery.png' %}" alt="">
+                        <p>Free shipping on orders over $30 in USA</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-left text-lg-center">
+                    <div class="header-item">
+                        <img src="{% static 'img/icons/voucher.png' %}" alt="">
+                        <p>20% Student Discount</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-left text-xl-right">
+                    <div class="header-item">
+                    <img src="{% static 'img/icons/sales.png' %}" alt="">
+                    <p>30% off on dresses. Use code: 30OFF</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Info End -->
+    <!-- Header End -->
+
+    {% block content %}
+    
+    {% endblock content %}
+
+    
+    <!-- Footer Section Begin -->
+    <footer class="footer-section spad">
+        <div class="container">
+            <div class="newslatter-form">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form action="#">
+                            <input type="text" placeholder="Your email address">
+                            <button type="submit">Subscribe to our newsletter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-widget">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>About us</h4>
+                            <ul>
+                                <li>About Us</li>
+                                <li>Community</li>
+                                <li>Jobs</li>
+                                <li>Shipping</li>
+                                <li>Contact Us</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Customer Care</h4>
+                            <ul>
+                                <li>Search</li>
+                                <li>Privacy Policy</li>
+                                <li>2019 Lookbook</li>
+                                <li>Shipping & Delivery</li>
+                                <li>Gallery</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Our Services</h4>
+                            <ul>
+                                <li>Free Shipping</li>
+                                <li>Free Returnes</li>
+                                <li>Our Franchising</li>
+                                <li>Terms and conditions</li>
+                                <li>Privacy Policy</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Information</h4>
+                            <ul>
+                                <li>Payment methods</li>
+                                <li>Times and shipping costs</li>
+                                <li>Product Returns</li>
+                                <li>Shipping methods</li>
+                                <li>Conformity of the products</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social-links-warp">
+			<div class="container">
+				<div class="social-links">
+					<a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+					<a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+					<a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+					<a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+					<a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+					<a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
+				</div>
+			</div>
+
+<div class="container text-center pt-5">
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
 
 
+		</div>
+    </footer>
+    <!-- Footer Section End -->
 
-
-
-
-
-
-	<script src="{% static 'js/fakeLoader.min.js' %}"></script>
-	<script>
-		$.fakeLoader();
-		$(function () {
-			$('[data-toggle="tooltip"]').tooltip()
-		})
-	</script>
-
-	<script>
-		$(document).ready(function () {
-			$(".dropdown-btn").click(function (e) {
-				e.preventDefault();
-				$('.dropdown').toggle();
-			});
-		});
-	</script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-	</script>
-	<script src="{% static 'js/bootstrap.min.js' %}"></script>
-	<script src="{% static 'js/main.js' %}"></script>
+    <!-- Js Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.j' %}s"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

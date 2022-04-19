@@ -7,8 +7,8 @@ from .views import *
 app_name = 'Custom_users'
 
 urlpatterns = [
-   path('',PatientSignUpView,name='patientRegister'),
-   path('home/',home,name='home'),
+   path('pp/',PatientSignUpView,name='patientRegister'),
+#    path('home/',home,name='home'),
    path('profile/', profile, name='profile'),
 
     path('profile-edit/', profile_edit, name='profile-edit'),

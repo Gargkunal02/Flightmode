@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'diagnostic_centers',
     'tests',
     'report_processing',
+    'portal',
 ]
 
 MIDDLEWARE = [
